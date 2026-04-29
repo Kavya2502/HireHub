@@ -3,6 +3,7 @@ import React from 'react';
 import Navbar from './components/components_lite/Navbar';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Register from './components/authentication/Register';
+import { Home, LogIn } from 'lucide-react';
 
 const appRouter = createBrowserRouter([
   {
@@ -11,7 +12,7 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/login",
-    element:<Login />
+    element:<LogIn />
   },
   {
     path: "/register",
