@@ -1,31 +1,50 @@
-import React from 'react';
-//import { Button } from './components/ui/button';
-import Navbar from './components/components_lite/Navbar';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Register from './components/authentication/Register';
-import { Home, LogIn } from 'lucide-react';
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import Navbar from "./components/components_lite/Navbar";
+import Home from "./components/components_lite/Home";
+import Login from "./components/authentication/Login";
+import Register from "./components/authentication/Register";
+
+// Layout (Navbar + page content)
+const Layout = ({ children }) => {
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
+};
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element:<Home />
+    element: (
+      <Layout>
+        <Home />
+      </Layout>
+    ),
   },
   {
     path: "/login",
-    element:<LogIn />
+    element: (
+      <Layout>
+        <Login />
+      </Layout>
+    ),
   },
   {
     path: "/register",
-    element:<Register />
+    element: (
+      <Layout>
+        <Register />
+      </Layout>
+    ),
   },
-]); 
+]);
 
-function App(){
-  return(
-    <div>
-      <RouterProvider router= {appRouter}></RouterProvider>
-    </div>
-  )
+function App() {
+  return <RouterProvider router={appRouter} />;
 }
 
-export default App
+export default App;
