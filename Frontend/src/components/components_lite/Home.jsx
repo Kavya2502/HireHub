@@ -9,27 +9,28 @@ import useGetAllJobs from "@/hooks/useGetAllJobs";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const { loading, error } = useGetAllJobs(); // Trigger data fetch
-  const jobs = useSelector((state) => state.jobs.allJobs); // Access Redux state
+  const { loading, error } = useGetAllJobs();
 
-  console.log("Jobs in Component:", { loading, error, jobs }); // Log to check state
+  const jobs = useSelector((state) => state.jobs.allJobs);
   const { user } = useSelector((store) => store.auth);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user?.role === "Recruiter") {
       navigate("/admin/companies");
     }
-  }, []);
+  }, [user, navigate]); // ✅ FIXED
 
   return (
     <div>
-      <Navbar />
       <Header />
       <Categories />
+
       {loading && <p>Loading jobs...</p>}
       {error && <p>Error: {error}</p>}
       {!loading && !error && <LatestJobs jobs={jobs} />}
+
       <Footer />
     </div>
   );

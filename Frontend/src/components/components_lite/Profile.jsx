@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { Contact, Mail, Pen } from "lucide-react";
 import { Badge } from "../ui/badge";
 import AppliedJob from "./AppliedJob";
-import EditProfileModal from "./EditProfileModal";
+import EditProfileModal from "./EditProfileModel.jsx";
 import { useSelector } from "react-redux";
 import useGetAppliedJobs from "@/hooks/useGetAllAppliedJobs";
 
@@ -29,7 +29,7 @@ const Profile = () => {
               />
             </Avatar>
             <div>
-              <h1 className=" font-medium text-xl">{user?.fullname}</h1>
+              <h1 className=" font-medium text-xl">Kavya Rani</h1>
               <p>{user?.profile?.bio}</p>
             </div>
           </div>
