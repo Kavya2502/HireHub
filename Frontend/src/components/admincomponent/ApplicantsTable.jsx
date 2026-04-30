@@ -14,11 +14,12 @@ import { useSelector } from "react-redux";
 import { toast } from "sonner";
 import axios from "axios";
 import { APPLICATION_API_ENDPOINT } from "@/utils/data";
+import { selectApplicants } from "@/redux/applicationSlice";
 
 const shortlistingStatus = ["Accepted", "Rejected"];
 
 const ApplicantsTable = () => {
-  const { applicants } = useSelector((store) => store.application);
+  const applicants = useSelector(selectApplicants);
 
   const statusHandler = async (status, id) => {
     console.log("called");

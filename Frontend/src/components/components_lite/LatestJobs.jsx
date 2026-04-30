@@ -1,9 +1,10 @@
 import React from "react";
 import JobCards from "./JobCards";
 import { useSelector } from "react-redux";
+import { selectAllJobs } from "@/redux/jobslice";
 
 const LatestJobs = () => {
-  const allJobs = useSelector((state) => state.jobs?.allJobs || []); // Safely access allJobs
+  const allJobs = useSelector(selectAllJobs);
 
   return (
     <div className="max-w-7xl mx-auto my-20">

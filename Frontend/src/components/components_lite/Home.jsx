@@ -7,12 +7,14 @@ import LatestJobs from "./LatestJobs";
 import Footer from "./Footer";
 import useGetAllJobs from "@/hooks/useGetAllJobs";
 import { useNavigate } from "react-router-dom";
+import { selectAllJobs } from "@/redux/jobslice";
+import { selectUser } from "@/redux/authSlice";
 
 const Home = () => {
   const { loading, error } = useGetAllJobs();
 
-  const jobs = useSelector((state) => state.job.allJobs);
-  const { user } = useSelector((store) => store.auth);
+  const jobs = useSelector(selectAllJobs);
+  const user = useSelector(selectUser);
 
   const navigate = useNavigate();
 

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { setAllJobs } from "@/redux/jobSlice";
+import { setAllJobs, selectSearchedQuery } from "@/redux/jobslice";
 
 const useGetAllJobs = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { searchedQuery } = useSelector((store) => store.job);
+  const searchedQuery = useSelector(selectSearchedQuery);
 
   useEffect(() => {
     const fetchAllJobs = async () => {

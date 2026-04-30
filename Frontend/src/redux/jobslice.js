@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 
 const initialState = {
   allJobs: [],
@@ -43,3 +43,42 @@ export const {
   setSearchedQuery,
 } = jobSlice.actions;
 export default jobSlice.reducer;
+
+// ✅ Memoized Selectors - prevents returning new array references on same data
+const selectJobsRoot = (state) => state.job;
+
+// Memoized selector for allJobs - returns same reference if data hasn't changed
+export const selectAllJobs = createSelector(
+  [selectJobsRoot],
+  (jobsRoot) => jobsRoot.allJobs
+);
+
+// Memoized selector for allAdminJobs
+export const selectAllAdminJobs = createSelector(
+  [selectJobsRoot],
+  (jobsRoot) => jobsRoot.allAdminJobs
+);
+
+// Memoized selector for singleJob
+export const selectSingleJob = createSelector(
+  [selectJobsRoot],
+  (jobsRoot) => jobsRoot.singleJob
+);
+
+// Memoized selector for searchJobByText
+export const selectSearchJobByText = createSelector(
+  [selectJobsRoot],
+  (jobsRoot) => jobsRoot.searchJobByText
+);
+
+// Memoized selector for allAppliedJobs
+export const selectAllAppliedJobs = createSelector(
+  [selectJobsRoot],
+  (jobsRoot) => jobsRoot.allAppliedJobs
+);
+
+// Memoized selector for searchedQuery
+export const selectSearchedQuery = createSelector(
+  [selectJobsRoot],
+  (jobsRoot) => jobsRoot.searchedQuery
+);

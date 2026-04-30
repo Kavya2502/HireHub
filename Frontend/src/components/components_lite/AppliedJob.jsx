@@ -10,9 +10,10 @@ import {
 } from "../ui/table";
 import { Badge } from "../ui/badge";
 import { useSelector } from "react-redux";
+import { selectAllAppliedJobs } from "@/redux/jobslice";
 
 const AppliedJob = () => {
-  const { allAppliedJobs } = useSelector((store) => store.job);
+  const allAppliedJobs = useSelector(selectAllAppliedJobs);
   return (
     <div>
       <Table>

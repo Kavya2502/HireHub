@@ -13,12 +13,14 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Edit2, Eye, MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { selectCompanies, selectSearchCompanyByText } from "@/redux/Companyslice";
+import { selectAllAdminJobs, selectSearchJobByText } from "@/redux/jobslice";
 
 const AdminJobsTable = () => {
-  const { companies, searchCompanyByText } = useSelector(
-    (store) => store.company
-  );
-  const { allAdminJobs, searchJobByText } = useSelector((store) => store.job);
+  const companies = useSelector(selectCompanies);
+  const searchCompanyByText = useSelector(selectSearchCompanyByText);
+  const allAdminJobs = useSelector(selectAllAdminJobs);
+  const searchJobByText = useSelector(selectSearchJobByText);
   const navigate = useNavigate();
 
   const [filterJobs, setFilterJobs] = useState(allAdminJobs);
