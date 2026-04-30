@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const { loading, error } = useGetAllJobs();
 
-  const jobs = useSelector((state) => state.jobs.allJobs);
+  const jobs = useSelector((state) => state.job.allJobs);
   const { user } = useSelector((store) => store.auth);
 
   const navigate = useNavigate();
